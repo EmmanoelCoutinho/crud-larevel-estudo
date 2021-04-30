@@ -22,6 +22,37 @@ class LivrosController extends Controller
             'autor' => $request->autor,
             'preco' => $request->preco,
         ]);
-        return "o livro foi salvo com sucesso";
+        return "o livro foi salvo com sucesso!";
+    }
+
+    public function show()
+    {
+        $livros = Livro::all();
+        return view('livros.todos', ['livros' => $livros]);
+    }
+
+    public function destroy($id)
+    {
+        $livro = Livro::findOrFail($id);
+        $livro->delete();
+        return 'Livro excluido com sucesso!';
+    }
+
+    public function edit($id)
+    {
+        $livro = Livro::findOrFail($id);
+        return view('livros.editar', ['livro' => $livro]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $livro = Livro::findOrFail($id);
+        $livro->update([
+            'isbn' => $request->isbn,
+            'titulo' => $request->titulo,
+            'autor' => $request->autor,
+            'preco' => $request->preco,
+        ]);
+        return "Livro atualizado com sucesso!";
     }
 }
