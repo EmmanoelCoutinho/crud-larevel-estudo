@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LivrosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/livro/novo', 'LivrosController@create');
+Route::post('/livro/novo', 'LivrosController@store')->name('salvar_livro');

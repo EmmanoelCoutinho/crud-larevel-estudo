@@ -19,7 +19,7 @@
 
 <body>
 
-    <form>
+    <form action="{{ route('salvar_livro') }}" method="post">
         @csrf
         <div for='isbn'><label>ISBN</label><input type='text' name="isbn" id="isbn"></div>
         <div for='titulo'><label>Titulo</label><input type='text' name="titulo" id="titulo"></div>
